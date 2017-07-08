@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ block.super }}News{% endblock %}
+
+{% block navbar-left %}
+  {% include "_navbar.html" with active_link="news" %}
+{% endblock %}
+
+<!-- Benefits of the Django application -->
+{% block container %}
+
+<div id="sec1" class="text-page">
+  <div class="container">
+
+      <div class="col-md-12 text-center">
+        <h1>{% include "_brandname.html" %}</h1>
+        <p class="lead">An Awesome Tagline Goes Here</p>
+        <p class="lead">{% include "_weather.html"%}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="sec2" class="text-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h2>current sports news</h2>
+        <p class="lead">be up to date with current events within european football</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="row">
+      <div class="col-lg-2">
+
+      </div>
+      </div>
+
+
+
+            <div class="col-lg-6">
+                <h2>Sport1</h2>
+          {% for key,value in news.sport1.items %}
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a href="{{key}}">{{key}}</a>
+                    </div>
+                    <div class="panel-body">
+                        {{value|safe}}
+                    </div>
+                </div>
+           {% endfor %}
+            </div>
+            <div class="col-lg-6">
+                <h2>Kicker</h2>
+          {% for key,value in news.kicker.items%}
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a href="{{key}}">{{key}}</a>
+                    </div>
+                    <div class="panel-body">
+                        {{value|safe}}
+                    </div>
+                </div>
+           {% endfor %}
+            </div>
+
+
+    </div>
+    </div>
+  </div>
+
+{% endblock container %}
+
+{% block scripts %}
+{% endblock scripts %}
